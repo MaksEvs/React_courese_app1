@@ -1,9 +1,14 @@
 import  "./CostItem.css";
 import CostDate from "./CostDate";
-import Card from "./Card";
+import Card from "../UI/Card";
 
 
-function CostItem(props) {
+const CostItem = (props) => {
+
+    let description = props.description;
+    const changeDescriptionHandler = () => {
+        description = 'new text'
+    }
 
     return (
         <Card className="cost-item">
@@ -11,9 +16,10 @@ function CostItem(props) {
                 date={props.date}
             />
             <div className="cost-item__description">
-                <h2>{props.description}</h2>
+                <h2>{description}</h2>
                 <div className="cost-item__price">${props.amount}</div>
             </div>
+            <button onClick={changeDescriptionHandler}>Изменить описание</button>
         </Card>
     );
 }
