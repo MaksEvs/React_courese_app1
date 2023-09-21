@@ -49,7 +49,7 @@ const CostForm = (props) => {
         event.preventDefault();
 
         const costData = {
-            name: inputName,
+            description: inputName,
             amount: inputAmount,
             date: new Date(inputDate)
         }
@@ -58,6 +58,10 @@ const CostForm = (props) => {
         setInputName('');
         setInputAmount('');
         setInputDate('');
+    }
+
+    const closeChangeHundler = (event) => {
+        
     }
 
     return (
@@ -79,6 +83,7 @@ const CostForm = (props) => {
                     <button 
                         type="submit"
                         >Добавить Расход</button>
+                    <button onChange={closeChangeHundler}>Отмена</button>
                 </div>
             </div>
         </form>

@@ -1,4 +1,5 @@
 import CostForm from './CostForm'
+import CreateNewCost from './CreateNewCost'
 import './NewCost.css'
 
 const NewCost = (props) => {
@@ -13,6 +14,7 @@ const NewCost = (props) => {
 
     return(
         <div className="new-cost">
+            <CreateNewCost/>
             <CostForm 
                 onSaveCostData={saveCostDataHandler}/>
         </div>
