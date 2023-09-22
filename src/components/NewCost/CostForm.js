@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './CostForm.css'
 
 const CostForm = (props) => {
-
+    const {onSaveCostData, onCancel} = props
     const [inputName, setInputName] = useState('');
     const [inputAmount, setInputAmount] = useState('');
     const [inputDate, setInputDate] = useState('');
@@ -54,14 +54,14 @@ const CostForm = (props) => {
             date: new Date(inputDate)
         }
 
-        props.onSaveCostData(costData);
+        onSaveCostData(costData);
         setInputName('');
         setInputAmount('');
         setInputDate('');
     }
 
     const closeChangeHundler = (event) => {
-        
+        onCancel()
     }
 
     return (
@@ -83,7 +83,7 @@ const CostForm = (props) => {
                     <button 
                         type="submit"
                         >Добавить Расход</button>
-                    <button onChange={closeChangeHundler}>Отмена</button>
+                    <button onClick={closeChangeHundler}>Отмена</button>
                 </div>
             </div>
         </form>

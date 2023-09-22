@@ -1,8 +1,12 @@
+import { useState } from 'react'
 import CostForm from './CostForm'
-import CreateNewCost from './CreateNewCost'
 import './NewCost.css'
 
+
 const NewCost = (props) => {
+    const [showCostForm, setShowCostForm] = useState(false);
+
+
     const saveCostDataHandler = (inputCostDate) => {
         const costDate = {
             ...inputCostDate,
@@ -12,11 +16,22 @@ const NewCost = (props) => {
         props.onAddCost(costDate);
     }
 
+    const getFormContent = () => {
+        if (showCostForm === true) {
+            return (<CostForm 
+                onCancel={() => setShowCostForm(false)}
+                onSaveCostData={saveCostDataHandler}/>)
+        } else {
+            return null
+        }
+    }
+
+    const CreateNewCost = <button onClick={() => setShowCostForm(true)}>Добавить новый расход</button>
+
     return(
         <div className="new-cost">
-            <CreateNewCost/>
-            <CostForm 
-                onSaveCostData={saveCostDataHandler}/>
+            {CreateNewCost}
+            {getFormContent()}
         </div>
     )
 }
